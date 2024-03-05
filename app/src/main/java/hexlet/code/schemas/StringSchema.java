@@ -15,13 +15,13 @@ public class StringSchema {
         return this;
     }
 
-    public StringSchema minLength(int minLength) {
-        this.minLength = minLength;
+    public StringSchema minLength(int min) {
+        this.minLength = min;
         return this;
     }
 
-    public StringSchema contains(String containsString) {
-        this.containsString = containsString;
+    public StringSchema contains(String str) {
+        this.containsString = str;
         return this;
     }
 
