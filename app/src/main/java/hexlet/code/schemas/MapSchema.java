@@ -20,7 +20,9 @@ public class MapSchema extends BaseSchema {
             for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
                 String parameterName = entry.getKey();
                 BaseSchema currentSchema = entry.getValue();
-                if (!currentSchema.isValid(contentMap.get(parameterName))) {
+                Object parameterValue = contentMap.get(parameterName);
+
+                if (parameterValue == null || !currentSchema.isValid(parameterValue)) {
                     return false;
                 }
             }
@@ -28,4 +30,5 @@ public class MapSchema extends BaseSchema {
         }, "shape");
         return this;
     }
+
 }
