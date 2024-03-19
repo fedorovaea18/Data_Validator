@@ -12,11 +12,11 @@ public class MapSchema extends BaseSchema<Map<?, ?>> {
         this.addValidator(map -> map.size() == size);
     }
 
-    public void shape(Map<String, BaseSchema<?>> schemas) {
+    public void shape(Map<String, BaseSchema> schemas) {
         this.addValidator(map -> checkMap(map, schemas));
     }
 
-    boolean checkMap(Map<?, ?> map, Map<String, BaseSchema<?>> schemas) {
+    boolean checkMap(Map<?, ?> map, Map<String, BaseSchema> schemas) {
         return map != null && schemas != null && schemas.entrySet().stream()
                 .allMatch(entry -> {
                     String key = entry.getKey();
