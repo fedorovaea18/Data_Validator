@@ -1,21 +1,22 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class MapSchema extends BaseSchema {
 
     public MapSchema required() {
-        addValidator(map -> map != null, "required");
+        addValidation(Objects::nonNull, "required");
         return this;
     }
 
     public MapSchema sizeof(int size) {
-        addValidator(map -> map == null || ((Map<?, ?>) map).size() == size, "sizeof");
+        addValidation(map -> map == null || ((Map<?, ?>) map).size() == size, "sizeof");
         return this;
     }
 
     public MapSchema shape(Map<String, BaseSchema> schemas) {
-        addValidator(map -> {
+        addValidation(map -> {
             Map<?, ?> contentMap = (Map<?, ?>) map;
             for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
                 String parameterName = entry.getKey();
