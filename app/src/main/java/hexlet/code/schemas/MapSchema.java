@@ -14,20 +14,18 @@ public class MapSchema extends BaseSchema<Map<String, Object>> {
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema<String>> schemas) {
+    public MapSchema shape(Map<String, BaseSchema<?>> schemas) {
         addValidator(map -> {
-            for (Map.Entry<String, BaseSchema<String>> entry : schemas.entrySet()) {
-                String parameterName = entry.getKey();
-                BaseSchema<String> currentSchema = entry.getValue();
-                Object parameterValue = ((Map<?, ?>) map).get(parameterName);
-
-                if (parameterValue == null || !currentSchema.isValid((String) parameterValue)) {
-                    return false;
-                }
+            if (map == null) {
+                return true;
             }
-            return true;
+            return schemas.entrySet().stream()
+                    .allMatch(schemaEntry -> {
+                        String key = schemaEntry.getKey();
+                        BaseSchema<?> schema = schemaEntry.getValue();
+                        return map.containsKey(key) && schema.isValid(map.get(key));
+                    });
         }, "shape");
         return this;
     }
 }
-

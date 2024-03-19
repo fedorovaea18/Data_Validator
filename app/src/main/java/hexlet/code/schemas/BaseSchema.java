@@ -11,8 +11,8 @@ public abstract class BaseSchema<T> {
         validators.put(validator, identifier);
     }
 
-    public boolean isValid(T object) {
-        return validators.keySet().stream().allMatch(validator -> validator.test(object));
+    public boolean isValid(Object object) {
+        return validators.keySet().stream().allMatch(validator -> validator.test((T) object));
     }
 }
 
