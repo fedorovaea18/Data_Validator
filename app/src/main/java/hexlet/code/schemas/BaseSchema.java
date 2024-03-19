@@ -1,17 +1,17 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Predicate;
 
 public abstract class BaseSchema {
-    private final List<Predicate<Object>> validators = new ArrayList<>();
+    private final Map<Predicate<Object>, String> validators = new HashMap<>();
 
-    public void addValidator(Predicate<Object> validator) {
-        validators.add(validator);
+    public void addValidator(Predicate<Object> validator, String identifier) {
+        validators.put(validator, identifier);
     }
 
     public boolean isValid(Object object) {
-        return validators.stream().allMatch(validator -> validator.test(object));
+        return validators.keySet().stream().allMatch(validator -> validator.test(object));
     }
 }

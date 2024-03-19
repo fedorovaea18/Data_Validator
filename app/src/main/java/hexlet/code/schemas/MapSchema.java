@@ -5,12 +5,12 @@ import java.util.Map;
 public class MapSchema extends BaseSchema {
 
     public MapSchema required() {
-        this.addValidator(map -> map != null);
+        addValidator(map -> map != null, "required");
         return this;
     }
 
     public MapSchema sizeof(int size) {
-        this.addValidator(map -> ((Map<?, ?>) map).size() == size);
+        addValidator(map -> ((Map<?, ?>) map).size() == size, "sizeof");
         return this;
     }
 
@@ -25,7 +25,7 @@ public class MapSchema extends BaseSchema {
                 }
             }
             return true;
-        });
+        }, "shape");
         return this;
     }
 }
