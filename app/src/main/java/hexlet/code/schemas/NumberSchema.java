@@ -3,7 +3,9 @@ package hexlet.code.schemas;
 public class NumberSchema extends BaseSchema {
 
     public NumberSchema required() {
-        addValidation(value -> value != null, "required");
+        addValidation(value -> {
+            return value != null && !(value instanceof Number && ((Number) value).doubleValue() == 0);
+        }, "required");
         return this;
     }
 
