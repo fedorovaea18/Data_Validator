@@ -14,21 +14,11 @@ public class MapSchema extends BaseSchema {
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema> schemas) {
-        addValidation(map -> {
-            Map<?, ?> contentMap = (Map<?, ?>) map;
-            for (Map.Entry<String, BaseSchema> entry : schemas.entrySet()) {
-                String parameterName = entry.getKey();
-                BaseSchema currentSchema = entry.getValue();
-                Object parameterValue = contentMap.get(parameterName);
-
-                if (parameterValue == null || !currentSchema.isValid(parameterValue)) {
-                    return false;
-                }
-            }
-            return true;
-        }, "shape");
+    public final MapSchema shape(Map<String, BaseSchema> mapSchemas) {
+        addValidation(map -> mapSchemas.entrySet().stream()
+                .allMatch(keyAndValue -> keyAndValue.getValue()
+                        .isValid(((Map<?, ?>) map).get(keyAndValue.getKey()))), "shape");
         return this;
     }
-
 }
+
