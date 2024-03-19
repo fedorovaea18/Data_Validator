@@ -7,14 +7,15 @@ import java.util.List;
 import java.util.function.Predicate;
 
 @Getter
-public class BaseSchema<T> {
-    private final List<Predicate<T>> validators = new ArrayList<>();
+public class BaseSchema {
+    private final List<Predicate<Object>> validators = new ArrayList<>();
 
-    public void addValidator(Predicate<T> validator) {
+    public void addValidator(Predicate<Object> validator) {
         validators.add(validator);
     }
 
     public boolean isValid(Object object) {
-        return validators.stream().allMatch(validator -> validator.test((T) object));
+        return validators.stream().allMatch(validator -> validator.test(object));
     }
 }
+
