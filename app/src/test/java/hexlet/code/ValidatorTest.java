@@ -69,7 +69,7 @@ public class ValidatorTest {
         assertFalse(schema.isValid(null));
         assertTrue(schema.isValid(new HashMap<>()));
 
-        Map<String, Object> data = new HashMap<>();
+        Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
         assertTrue(schema.isValid(data));
         schema.sizeof(2);
@@ -84,17 +84,17 @@ public class ValidatorTest {
         Validator v = new Validator();
         MapSchema schema = v.map();
 
-        Map<String, BaseSchema<?>> schemas = new HashMap<>();
+        Map<String, BaseSchema> schemas = new HashMap<>();
         schemas.put("firstName", v.string().required());
         schemas.put("lastName", v.string().required().minLength(2));
 
         schema.shape(schemas);
 
-        Map<String, Object> person1 = new HashMap<>();
-        person1.put("firstName", "John");
-        person1.put("lastName", "Smith");
-        person1.put("age", 30);
-        assertTrue(schema.isValid(person1));
+        Map<String, Object> human1 = new HashMap<>();
+        human1.put("firstName", "John");
+        human1.put("lastName", "Smith");
+        human1.put("age", 30);
+        assertTrue(schema.isValid(human1));
 
         Map<String, Object> human2 = new HashMap<>();
         human2.put("firstName", "Anna");
