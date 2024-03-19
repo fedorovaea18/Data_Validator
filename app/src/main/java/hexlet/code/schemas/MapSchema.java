@@ -6,12 +6,12 @@ public class MapSchema extends BaseSchema {
 
     public MapSchema required() {
         this.addValidator(map -> map != null);
-        return null;
+        return this;
     }
 
     public MapSchema sizeof(int size) {
-        this.addValidator(map -> ((Map<?, ?>) map).size()  == size);
-        return null;
+        this.addValidator(map -> ((Map<?, ?>) map).size() == size);
+        return this;
     }
 
     public MapSchema shape(Map<String, BaseSchema> schemas) {
