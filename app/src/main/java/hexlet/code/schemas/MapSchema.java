@@ -1,12 +1,11 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
-import java.util.Objects;
 
 public class MapSchema extends BaseSchema {
 
     public MapSchema required() {
-        addValidation(Objects::nonNull, "required");
+        addValidation(map -> map != null, "required");
         return this;
     }
 
@@ -31,4 +30,5 @@ public class MapSchema extends BaseSchema {
         }, "shape");
         return this;
     }
+
 }

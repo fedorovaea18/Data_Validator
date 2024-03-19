@@ -8,11 +8,11 @@ public class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema positive() {
-        addValidation(value -> value == null || (((Number) value).doubleValue() > 0), "positive");
+        addValidation(value -> value == null || (((Number) value).doubleValue() >= 0), "positive");
         return this;
     }
 
-    public NumberSchema range(int min, int max) {
+    public NumberSchema range(double min, double max) {
         addValidation(value -> {
             if (value == null) {
                 return false;
@@ -24,4 +24,5 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 }
+
 
