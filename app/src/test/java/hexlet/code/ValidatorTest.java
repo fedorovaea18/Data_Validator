@@ -81,6 +81,7 @@ public class ValidatorTest {
 
     @Test
     public void testMapSchemaValidation2() {
+
         Validator v = new Validator();
         MapSchema schema = v.map();
 
