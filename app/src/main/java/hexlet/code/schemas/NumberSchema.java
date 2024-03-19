@@ -12,7 +12,6 @@ public class NumberSchema extends BaseSchema<Number> {
         return this;
     }
 
-
     public NumberSchema range(int min, int max) {
         this.addValidator(value -> value != null && value.doubleValue() >= min && value.doubleValue() <= max);
         return this;

@@ -10,9 +10,8 @@ import java.util.function.Predicate;
 public class BaseSchema<T> {
     private final List<Predicate<T>> validators = new ArrayList<>();
 
-    public BaseSchema<T> addValidator(Predicate<T> validator) {
+    public void addValidator(Predicate<T> validator) {
         validators.add(validator);
-        return this;
     }
 
     public boolean isValid(T obj) {
