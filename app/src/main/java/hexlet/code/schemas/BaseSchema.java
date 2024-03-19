@@ -14,7 +14,7 @@ public class BaseSchema<T> {
         validators.add(validator);
     }
 
-    public boolean isValid(T obj) {
-        return validators.stream().allMatch(validator -> validator.test(obj));
+    public boolean isValid(Object object) {
+        return validators.stream().allMatch(validator -> validator.test((T) object));
     }
 }
