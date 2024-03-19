@@ -23,4 +23,3 @@ public class NumberSchema extends BaseSchema<Number> {
         return this;
     }
 }
-

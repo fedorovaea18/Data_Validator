@@ -15,4 +15,3 @@ public abstract class BaseSchema<T> {
         return validators.keySet().stream().allMatch(validator -> validator.test((T) object));
     }
 }
-
