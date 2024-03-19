@@ -1,12 +1,9 @@
 package hexlet.code.schemas;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-@Getter
 public abstract class BaseSchema {
     private final List<Predicate<Object>> validators = new ArrayList<>();
 
@@ -18,4 +15,3 @@ public abstract class BaseSchema {
         return validators.stream().allMatch(validator -> validator.test(object));
     }
 }
-
