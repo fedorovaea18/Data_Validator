@@ -1,30 +1,30 @@
 package hexlet.code.schemas;
 
-public class NumberSchema extends BaseSchema {
+import java.util.Objects;
+import java.util.function.Predicate;
 
+public class NumberSchema extends BaseSchema {
+    public NumberSchema() {
+        Predicate<Object> instanceofString = num -> num == null || num instanceof Integer;
+        addValidityCheck("instanceof", instanceofString);
+    }
     public NumberSchema required() {
-        addValidation(value -> {
-            return value != null && !(value instanceof Number && ((Number) value).doubleValue() == 0);
-        }, "required");
+        Predicate<Object> requiredNumber =  Objects::nonNull;
+        addValidityCheck("required", requiredNumber);
         return this;
     }
 
     public NumberSchema positive() {
-        addValidation(value -> value == null || (((Number) value).doubleValue() >= 0), "positive");
+        Predicate<Object> positiveNumber = num -> num instanceof Integer && (Integer) num > 0 || num == null;
+        addValidityCheck("positive", positiveNumber);
         return this;
     }
 
-    public NumberSchema range(double min, double max) {
-        addValidation(value -> {
-            if (value == null) {
-                return false;
-            }
-            Number number = (Number) value;
-            double doubleValue = number.doubleValue();
-            return doubleValue >= min && doubleValue <= max;
-        }, "range");
+    public NumberSchema range(Integer min, Integer max) {
+        Predicate<Object> rangeNumber = num -> num == null || num instanceof Integer
+                && ((Integer) num >= min && (Integer) num <= max);
+        addValidityCheck("range", rangeNumber);
         return this;
     }
 }
-
 

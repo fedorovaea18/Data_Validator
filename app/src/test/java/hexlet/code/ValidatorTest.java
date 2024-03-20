@@ -35,6 +35,11 @@ public class ValidatorTest {
         assertTrue(schema.isValid(10));
         assertFalse(schema.isValid(4));
         assertFalse(schema.isValid(11));
+
+        schema.positive();
+        assertTrue(schema.positive().isValid(5));
+        assertFalse(schema.positive().isValid(0));
+        assertFalse(schema.positive().isValid(-5));
     }
 
     @Test
@@ -55,6 +60,16 @@ public class ValidatorTest {
         assertFalse(schema.contains("whatthe").isValid("what does the fox say"));
 
         assertFalse(schema.isValid("what does the fox say"));
+
+        //assertTrue(schema.minLength(3).isValid("what"));
+        assertFalse(schema.minLength(6).isValid("fox"));
+        assertFalse(schema.minLength(5).isValid(null));
+        //assertTrue(schema.minLength(0).isValid(""));
+
+        assertFalse(schema.isValid("what does the fox say"));
+        assertFalse(schema.isValid("what"));
+
+        assertFalse(schema.contains("what").isValid("what"));
     }
 
     @Test

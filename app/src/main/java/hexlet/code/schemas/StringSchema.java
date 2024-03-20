@@ -1,19 +1,29 @@
 package hexlet.code.schemas;
 
+import java.util.function.Predicate;
+
 public class StringSchema extends BaseSchema {
+    public StringSchema() {
+        Predicate<Object> instanceofString = str -> str == null || str instanceof String;
+        addValidityCheck("instanceof", instanceofString);
+    }
 
     public StringSchema required() {
-        addValidation(str -> str != null && !((String) str).isEmpty(), "required");
+        Predicate<Object> requiredString = str -> (str != null && !str.equals(""));
+        addValidityCheck("required", requiredString);
         return this;
     }
 
-    public StringSchema minLength(Integer length) {
-        addValidation(str -> str == null || ((String) str).length() >= length, "minLength");
+    public StringSchema minLength(Integer minLength) {
+        Predicate<Object> minLengthString = str -> str != null && ((String) str).length() >= minLength;
+        addValidityCheck("minLength", minLengthString);
         return this;
     }
 
     public StringSchema contains(String substring) {
-        addValidation(str -> str == null || ((String) str).contains(substring), "contains");
+        Predicate<Object> containsString = str -> substring != null && str != null
+                && str.toString().contains(substring);
+        addValidityCheck("contains", containsString);
         return this;
     }
 }
