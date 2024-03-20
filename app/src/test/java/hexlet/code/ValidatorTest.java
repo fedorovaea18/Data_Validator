@@ -80,7 +80,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testNestedMapSchemaValidation() {
+    public void testMapSchemaValidation2() {
         Validator v = new Validator();
         MapSchema schema = v.map();
 
