@@ -38,7 +38,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testStringSchema() {
+    public void testStringSchemaValidation() {
         Validator v = new Validator();
         StringSchema schema = v.string();
 

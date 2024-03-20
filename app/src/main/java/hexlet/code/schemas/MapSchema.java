@@ -14,10 +14,10 @@ public class MapSchema extends BaseSchema {
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema> schemas) {
+    public MapSchema shape(Map<String, ? extends BaseSchema> schemas) {
         addValidation(map -> schemas.entrySet().stream()
                 .allMatch(keyAndValue -> keyAndValue.getValue()
-                        .isValid(((Map<?, ?>) map).get(keyAndValue.getKey()))), "shape");
+                        .isValid(((Map<String, ?>) map).get(keyAndValue.getKey()))), "shape");
         return this;
     }
 }
