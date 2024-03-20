@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.function.Predicate;
 
-public class StringSchema<T> extends BaseSchema<T> {
+public final class StringSchema<T> extends BaseSchema<T> {
     public StringSchema() {
         Predicate<T> instanceofString = str -> str == null || str instanceof String;
         addValidityCheck("instanceof", instanceofString);
