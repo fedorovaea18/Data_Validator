@@ -4,7 +4,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f98370da14866d304cd0/test_coverage)](https://codeclimate.com/github/fedorovaea18/java-project-78/test_coverage)
 [![GitHub Actions Status](https://github.com/fedorovaea18/java-project-78/actions/workflows/github-actions.yml/badge.svg)](https://github.com/fedorovaea18/java-project-78/actions)
 
-### **Валидатор данных**
+# **Валидатор данных**
 
 Данный проект реализует функцию создания собственной библиотеки для проверки валидации данных в зависимости от их типа. Проверяемые типы данных: String, Number и Map.
 
@@ -28,7 +28,7 @@ _positive()_ — положительное число;
 
 _range()_ — диапазон, в который попадает значение числа, включая границы.
 
-##**Валидация объектов типа Map**
+## **Валидация объектов типа Map**
 
 В проекте реализованы следующие валидаторы проверки объектов Map:
 
@@ -36,5 +36,5 @@ _required()_ — требуется тип данных Map;
 
 _sizeof()_ — количество пар ключ-значений в объекте Map равно заданному.
 
-##**Вложенная валидация**
+## **Вложенная валидация**
 В проекте реализована проверка внутри объектов Map с помощью валидатора _shape()_.
