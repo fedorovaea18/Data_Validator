@@ -4,18 +4,16 @@ import hexlet.code.schemas.MapSchema;
 import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.StringSchema;
 
-import java.util.Map;
-
-public final class Validator<R, T> {
-    public StringSchema<?> string() {
-        return new StringSchema<String>();
+public final class Validator {
+    public StringSchema string() {
+        return new StringSchema();
     }
 
-    public NumberSchema<?> number() {
-        return new NumberSchema<Number>();
+    public NumberSchema number() {
+        return new NumberSchema();
     }
 
-    public MapSchema<R, Map<R, T>> map() {
-        return new MapSchema<R, Map<R, T>>();
+    public MapSchema map() {
+        return new MapSchema();
     }
 }
