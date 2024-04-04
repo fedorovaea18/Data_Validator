@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 public final class MapSchema<String, T> extends BaseSchema<Map<String, T>> {
 
     public MapSchema<String, T> required() {
-        Predicate<Map<String, T>> requiredMap = map -> map != null && !map.isEmpty();
+        Predicate<Map<String, T>> requiredMap = map -> map != null;
         addValidityCheck("required", requiredMap);
         return this;
     }
