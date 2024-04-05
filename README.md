@@ -21,7 +21,6 @@
 После настройки схемы валидации необходимо вызвать метод _isValid()_ для проверки данных.
 
 Пример использования:
-
 ```java
 Validator v = new Validator();
 StringSchema schema = v.string();
@@ -42,7 +41,6 @@ schema.required().isValid(""); //false
 После настройки схемы валидации необходимо вызвать метод _isValid()_ для проверки данных.
 
 Пример использования:
-
 ```java
 Validator v = new Validator();
 NumberSchema schema = v.number();
