@@ -63,6 +63,17 @@ schema.range(5, 10).isValid(4); //false
 Validator v = new Validator();
 MapSchema schema = v.map();
 
+Map<String, String> data = new HashMap<>();
+data.put("key1", "value1");
+schema.isValid(data); // true
+
+schema.sizeof(2);
+
+schema.isValid(data);  // false
+data.put("key2", "value2");
+schema.isValid(data); // true
+```
+
 ## **Вложенная валидация**
 
 В проекте реализована проверка данных внутри объектов Map с помощью валидатора _shape()_.
