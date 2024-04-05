@@ -25,8 +25,9 @@
 Validator v = new Validator();
 StringSchema schema = v.string();
 
-schema.contains("what").isValid("what does the fox say"); // true
 schema.required().isValid(""); //false
+schema.minLength(6).isValid("fox"); //false
+schema.contains("what").isValid("what does the fox say"); // true
 ```
 ## **Валидация чисел**
 
@@ -34,9 +35,9 @@ schema.required().isValid(""); //false
 
 - _required()_ — любое число;
 
-- _positive()_ — положительное число;
+- _positive()_ — число должно быть положительным;
 
-- _range()_ — диапазон, в который попадает значение числа, включая границы.
+- _range()_ — значение числа должно попадать в диапазон, включая границы.
 
 После настройки схемы валидации необходимо вызвать метод _isValid()_ для проверки данных.
 
@@ -45,6 +46,7 @@ schema.required().isValid(""); //false
 Validator v = new Validator();
 NumberSchema schema = v.number();
 
+schema.required().isValid(-10); //false
 schema.positive().isValid(5); // true
 schema.range(5, 10).isValid(4); //false
 ```
@@ -56,5 +58,13 @@ schema.range(5, 10).isValid(4); //false
 
 - _sizeof()_ — количество пар ключ-значений в объекте Map равно заданному.
 
+Пример использования:
+```java
+Validator v = new Validator();
+MapSchema schema = v.map();
+
 ## **Вложенная валидация**
+
 В проекте реализована проверка данных внутри объектов Map с помощью валидатора _shape()_.
+
+Пример использования:
