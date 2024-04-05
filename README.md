@@ -17,7 +17,7 @@
 - _minLength()_ — строка должна быть равна или длиннее указанного числа;
 
 - _contains()_ — cтрока должна содержать определённую подстроку.
-- 
+  
 После настройки схемы валидации необходимо вызвать метод _isValid()_ для проверки данных.
 
 Пример использования:
@@ -26,8 +26,9 @@
 Validator v = new Validator();
 StringSchema schema = v.string();
 
-schema.minLength(10).minLength(4).isValid("Hexlet"); // true
-
+schema.contains("what").isValid("what does the fox say"); // true
+schema.required().isValid(""); //false
+```
 ## **Валидация чисел**
 
 В проекте реализованы следующие методы проверки чисел:
@@ -38,6 +39,17 @@ schema.minLength(10).minLength(4).isValid("Hexlet"); // true
 
 - _range()_ — диапазон, в который попадает значение числа, включая границы.
 
+После настройки схемы валидации необходимо вызвать метод _isValid()_ для проверки данных.
+
+Пример использования:
+
+```java
+Validator v = new Validator();
+NumberSchema schema = v.number();
+
+schema.positive().isValid(5); // true
+schema.range(5, 10).isValid(4); //false
+```
 ## **Валидация объектов типа Map**
 
 В проекте реализованы следующие валидаторы проверки объектов Map:
@@ -48,6 +60,3 @@ schema.minLength(10).minLength(4).isValid("Hexlet"); // true
 
 ## **Вложенная валидация**
 В проекте реализована проверка данных внутри объектов Map с помощью валидатора _shape()_.
-
-## **Демонстрация работы проекта**
-
