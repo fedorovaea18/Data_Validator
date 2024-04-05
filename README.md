@@ -33,7 +33,7 @@ schema.contains("what").isValid("what does the fox say"); // true
 
 В проекте реализованы следующие методы проверки чисел:
 
-- _required()_ — любое число;
+- _required()_ — требуется наличие любого числа;
 
 - _positive()_ — число должно быть положительным;
 
@@ -56,7 +56,9 @@ schema.range(5, 10).isValid(4); //false
 
 - _required()_ — требуется тип данных Map;
 
-- _sizeof()_ — количество пар ключ-значений в объекте Map равно заданному.
+- _sizeof()_ — количество пар ключ-значений в объекте Map должно быть равно заданному
+
+После настройки схемы валидации необходимо вызвать метод _isValid()_ для проверки данных.
 
 Пример использования:
 ```java
@@ -77,5 +79,35 @@ schema.isValid(data); // true
 ## **Вложенная валидация**
 
 В проекте реализована проверка данных внутри объектов Map с помощью валидатора _shape()_.
+После настройки схемы валидации необходимо вызвать метод _isValid()_ для проверки данных.
 
 Пример использования:
+```java
+Validator v = new Validator();
+MapSchema schema = v.map();
+
+Map<String, BaseSchema> schemas = new HashMap<>();
+schemas.put("firstName", v.string().required());
+schemas.put("lastName", v.string().required().minLength(2));
+schemas.put("age", v.number().required().positive());
+
+schema.shape(schemas);
+
+Map<String, Object> human1 = new HashMap<>();
+human1.put("firstName", "John");
+human1.put("lastName", "Smith");
+human1.put("age", 30);
+schema.isValid(human1); //true
+
+Map<String, Object> human2 = new HashMap<>();
+human2.put("firstName", "Anna");
+human2.put("lastName", "B");
+human2.put("age", -5);
+schema.isValid(human2); //false
+
+Map<String, Object> human3 = new HashMap<>();
+human3.put("firstName", "Bob");
+human3.put("lastName", null);
+human3.put("age", 45);
+schema.isValid(human3); //false
+```
