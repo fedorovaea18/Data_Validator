@@ -56,7 +56,7 @@ schema.range(5, 10).isValid(4); //false
 
 - _required()_ — требуется тип данных Map;
 
-- _sizeof()_ — количество пар ключ-значений в объекте Map должно быть равно заданному
+- _sizeof()_ — количество пар ключ-значений в объекте Map должно быть равно заданному.
 
 После настройки схемы валидации необходимо вызвать метод _isValid()_ для проверки данных.
 
@@ -64,6 +64,8 @@ schema.range(5, 10).isValid(4); //false
 ```java
 Validator v = new Validator();
 MapSchema schema = v.map();
+
+schema.required().isValid(new HashMap<>()); //true
 
 Map<String, String> data = new HashMap<>();
 data.put("key1", "value1");
