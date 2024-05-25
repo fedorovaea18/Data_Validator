@@ -4,17 +4,16 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f98370da14866d304cd0/test_coverage)](https://codeclimate.com/github/fedorovaea18/java-project-78/test_coverage)
 [![GitHub Actions Status](https://github.com/fedorovaea18/java-project-78/actions/workflows/github-actions.yml/badge.svg)](https://github.com/fedorovaea18/java-project-78/actions)
 
-This project implements the function of creating a custom library for data validation depending on their type. The library supports three data types: Strings, Integers and Maps.
-
+This project implements the function of creating a custom library for data validation depending on their type. The library supports three data types: Strings, Integers and Maps. Three schemas are available: StringSchema, NumberSchema and MapSchema.
 ## **StringSchema**
 
 StringSchema has three validation methods:
 
-- _required()_ — строка должна быть заполненной(непустой);
+- _required()_ — makes the fields required and limits the possibility to use null or empty String;
 
-- _minLength()_ — строка должна быть равна или длиннее указанного числа;
+- _minLength()_ — adds a minimum length constraint for the String. The String must be equal or longer than a specified number. Requires an integer parameter of minimum length;
 
-- _contains()_ — cтрока должна содержать определённую подстроку.
+- _contains()_ — adds a String content constraint. The String must contain a substring passed in the method parameter.
 
 Usage example:
 ```java
@@ -29,11 +28,11 @@ schema.contains("what").isValid("what does the fox say"); // true
 
 NumberSchema has three validation methods:
 
-- _required()_ — требуется наличие любого числа;
+- _required()_ — makes the fileds required and limits the possibility to use null;
 
-- _positive()_ — число должно быть положительным;
+- _positive()_ — adds a constraint to use negative numbers;
 
-- _range()_ — значение числа должно попадать в диапазон, включая границы.
+- _range()_ — adds a range constraint (inclusive). Requires two integer parameters of the first and the last numbers of range.
 
 Usage example:
 ```java
@@ -48,11 +47,11 @@ schema.range(5, 10).isValid(4); //false
 
 MapSchema has three validation methods:
 
-- _required()_ — требуется тип данных Map;
+- _required()_ — makes the fields required and limits the possibility to use null.
 
-- _sizeof()_ — количество пар ключ-значений в объекте Map должно быть равно заданному.
+- _sizeof()_ — adds a map size constraint. The K-V count must be equal to the number passed in the method parameter.
 
-- _shape()_ - 
+- _shape()_ — adds constraints to map values. Accepts as a parameter a map of keys whose values need to be validated and schemas that would validate the values.
 
 Usage example:
 ```java
