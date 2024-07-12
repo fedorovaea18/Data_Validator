@@ -5,7 +5,9 @@
 [![GitHub Actions Status](https://github.com/fedorovaea18/java-project-78/actions/workflows/github-actions.yml/badge.svg)](https://github.com/fedorovaea18/java-project-78/actions)
 
 This project implements the function of creating a custom library for data validation depending on their type. The library supports three data types: Strings, Integers and Maps. Three schemas are available: StringSchema, NumberSchema and MapSchema.
-## **StringSchema**
+
+## **Examples of usage:
+### **StringSchema**
 
 StringSchema has three validation methods:
 
@@ -15,7 +17,6 @@ StringSchema has three validation methods:
 
 - _contains()_ — adds a String content constraint. The String must contain a substring passed in the method parameter.
 
-Usage example:
 ```java
 Validator v = new Validator();
 StringSchema schema = v.string();
@@ -24,7 +25,7 @@ schema.required().isValid(""); //false
 schema.minLength(6).isValid("fox"); //false
 schema.contains("what").isValid("what does the fox say"); // true
 ```
-## **NumberSchema**
+### **NumberSchema**
 
 NumberSchema has three validation methods:
 
@@ -34,7 +35,6 @@ NumberSchema has three validation methods:
 
 - _range()_ — adds a range constraint (inclusive). Requires two integer parameters of the first and the last numbers of range.
 
-Usage example:
 ```java
 Validator v = new Validator();
 NumberSchema schema = v.number();
@@ -43,7 +43,7 @@ schema.required().isValid(-10); //false
 schema.positive().isValid(5); // true
 schema.range(5, 10).isValid(4); //false
 ```
-## **MapSchema**
+### **MapSchema**
 
 MapSchema has three validation methods:
 
@@ -53,7 +53,6 @@ MapSchema has three validation methods:
 
 - _shape()_ — adds constraints to map values. Accepts as a parameter a map of keys whose values need to be validated and schemas that would validate the values.
 
-Usage example:
 ```java
 Validator v = new Validator();
 MapSchema schema = v.map();
