@@ -8,7 +8,7 @@ This project implements the function of creating a custom library for data valid
 
 ## **Installing**
 ```
-git clonegit@github.com:fedorovaea18/Data_Validator.git
+git clone git@github.com:fedorovaea18/Data_Validator.git
 cd Data_Validator/app
 make install
 ```
