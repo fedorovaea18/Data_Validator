@@ -6,6 +6,15 @@
 
 This project implements the function of creating a custom library for data validation depending on their type. The library supports three data types: Strings, Integers and Maps. Three schemas are available: StringSchema, NumberSchema and MapSchema.
 
+## **Installing**
+git clonegit@github.com:fedorovaea18/Data_Validator.git
+cd Data_Validator/app
+make install
+
+## **Tools**
+make lint
+make test
+
 ## **Examples of usage:**
 **StringSchema**
 
