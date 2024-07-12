@@ -7,7 +7,7 @@
 This project implements the function of creating a custom library for data validation depending on their type. The library supports three data types: Strings, Integers and Maps. Three schemas are available: StringSchema, NumberSchema and MapSchema.
 
 ## **Examples of usage:**
-### **StringSchema**
+**StringSchema**
 
 StringSchema has three validation methods:
 
@@ -25,7 +25,7 @@ schema.required().isValid(""); //false
 schema.minLength(6).isValid("fox"); //false
 schema.contains("what").isValid("what does the fox say"); // true
 ```
-### **NumberSchema**
+**NumberSchema**
 
 NumberSchema has three validation methods:
 
@@ -43,7 +43,7 @@ schema.required().isValid(-10); //false
 schema.positive().isValid(5); // true
 schema.range(5, 10).isValid(4); //false
 ```
-### **MapSchema**
+**MapSchema**
 
 MapSchema has three validation methods:
 
