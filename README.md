@@ -6,7 +6,7 @@
 
 This project implements the function of creating a custom library for data validation depending on their type. The library supports three data types: Strings, Integers and Maps. Three schemas are available: StringSchema, NumberSchema and MapSchema.
 
-## **Examples of usage:
+## **Examples of usage:**
 ### **StringSchema**
 
 StringSchema has three validation methods:
