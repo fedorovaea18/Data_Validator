@@ -13,7 +13,7 @@ cd Data_Validator/app
 make install
 ```
 
-## **Tools**
+## **Run checkstyle and tests**
 ```
 make lint
 make test
